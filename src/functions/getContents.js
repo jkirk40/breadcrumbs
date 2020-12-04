@@ -3,10 +3,10 @@ const root = {
     children: {
         home: {
             type: "dir",
-                children: {
-                    myname: {
+            children: {
+                myname: {
                     type: "dir",
-                        children: {
+                    children: {
                         "filea.txt": {
                             type: "file",
                         },
@@ -34,7 +34,9 @@ const root = {
 };
 
 export default function getContent (path) {
+    let pathArray = path.split('/');
+    let current = pathArray[pathArray.length - 1];
 
-    console.log(root)
-    return 'test';
+    console.log(current)
+    return(current)
 }
