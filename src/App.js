@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      path: "/root"
+      path: "root/home/myname"
     }
   }
 
