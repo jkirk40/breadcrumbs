@@ -50,6 +50,7 @@ class App extends React.Component {
       <div className="App">
         <div>
           <Breadcrumb
+            depth={0}
             obj={this.state.obj}
             path={this.state.path}
             updatePath={this.updatePath}

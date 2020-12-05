@@ -1,23 +1,24 @@
 export default function Breadcrumb(props) {
     const pathArray = props.path.split('/')
-    const current = pathArray[0];
+    const current = pathArray[props.depth];
 
     const handleClick = (link) => {
-        console.log(props.obj)
+        console.log(props)
         console.log(props.path)
         console.log(link)
         let arr = pathArray;
     }
 
     const recursiveBreadcrumb = () => {
-        if (pathArray.length === 1) {
+        if (pathArray.length - 1 === props.depth) {
             return '';
         } else {
             const newPath = pathArray.slice(1).join('/');
             return (
                 <Breadcrumb
+                    depth={props.depth + 1}
                     obj={props.obj}
-                    path={newPath}
+                    path={props.path}
                     updatePath={props.updatePath}
                 />
             )
