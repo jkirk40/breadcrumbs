@@ -18,7 +18,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {obj.name}
+        <p>{obj.name}</p>
+        <p>{obj.type}</p>
+        <p>{obj.files}</p>
+        <p>{obj.subdirectories}</p>
       </div>
     );
   }
