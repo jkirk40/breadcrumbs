@@ -39,13 +39,9 @@ export default function getContent (path) {
         let pathArray = arr.split('/');
         if (pathArray.length === 1) {
 
-            let files = Object.keys(obj.children).filter((key) => {
-                return obj.children[key].type === "file";
-            })
+            let files = Object.keys(obj.children).filter((key) => obj.children[key].type === "file");
 
-            let subdirectories = Object.keys(obj.children).filter((key) => {
-                return obj.children[key].type === "dir";
-            })
+            let subdirectories = Object.keys(obj.children).filter((key) => obj.children[key].type === "dir");
 
             const result = {
                 name: pathArray[0],
@@ -54,6 +50,7 @@ export default function getContent (path) {
                 subdirectories: subdirectories
             }
 
+            console.log(result)
             return result;
         } else {
             const newArr = pathArray.slice(1).join('/');
