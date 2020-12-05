@@ -2,6 +2,8 @@ import React from 'react';
 
 import getContent from "./functions/getContents";
 
+import InfoDisplay from './components/infoDisplay';
+
 import './App.css';
 
 class App extends React.Component {
@@ -33,10 +35,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <p>{this.state.obj.name}</p>
-        <p>{this.state.obj.type}</p>
-        <p>{this.state.obj.files}</p>
-        <p>{this.state.obj.subdirectories}</p>
+        <InfoDisplay obj={this.state.obj}></InfoDisplay>
       </div>
     );
   }
