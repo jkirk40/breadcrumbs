@@ -35,8 +35,8 @@ const root = {
 
 export default async function getContent (path) {
 
-    const traverse = (arr, obj) => {
-        let pathArray = arr.split('/');
+    const traverse = (str, obj) => {
+        let pathArray = str.split('/');
         if (pathArray.length === 1) {
             const objectFilter = (targetType) => {
                 return Object.keys(obj.children).filter((key) => obj.children[key].type === targetType);
