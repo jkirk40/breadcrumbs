@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       path: "root/home/myname",
       objLoaded: false,
-      obj: {}
+      obj: {},
+      error: false
     }
   }
 
@@ -24,10 +25,16 @@ class App extends React.Component {
   loadObj = () => {
     this.setState({objLoaded: false})
     getContent(this.state.path).then((res) => {
-      console.log(res)
-      this.setState({obj: res})
+      this.setState({
+        obj: res,
+        error: false
+      })
     })
     .catch((err) => {
+      this.setState({
+        obj: {},
+        error: true
+      })
       console.log(err)
     })
   }
@@ -35,6 +42,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
+        {this.state.error ? 'error thrown, please see console' : ''}
         <InfoDisplay obj={this.state.obj}></InfoDisplay>
       </div>
     );
