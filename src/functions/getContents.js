@@ -43,11 +43,17 @@ export default function getContent (path) {
                 return obj.children[key].type === "file";
             })
 
+            let subdirectories = Object.keys(obj.children).filter((key) => {
+                return obj.children[key].type === "dir";
+            })
+
             const result = {
                 name: pathArray[0],
                 type: obj.type,
-                files: files
+                files: files,
+                subdirectories: subdirectories
             }
+
             return result;
         } else {
             const newArr = pathArray.slice(1).join('/');
