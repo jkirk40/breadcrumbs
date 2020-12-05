@@ -15,7 +15,6 @@ export default function Breadcrumb(props) {
             return (
                 <Breadcrumb
                     depth={props.depth + 1}
-                    obj={props.obj}
                     path={props.path}
                     updatePath={props.updatePath}
                 />
