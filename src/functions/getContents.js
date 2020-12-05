@@ -34,12 +34,17 @@ const root = {
 };
 
 export default function getContent (path) {
-    let pathArray = path.split('/');
 
-    if (pathArray.length === 1) {
-        return 'at target address: ' + pathArray[0];
-    } else {
-        const newArr = pathArray.slice(1).join('/');
-        return getContent(newArr);
+    const traverse = (arr, obj) => {
+        let pathArray = arr.split('/');
+        if (pathArray.length === 1) {
+            return 'at target address: ' + pathArray[0];
+        } else {
+            const newArr = pathArray.slice(1).join('/');
+            return traverse(newArr, obj.children[pathArray[1]]);
+        }
     }
+
+    const result = traverse(path, root);
+    return result;
 }
