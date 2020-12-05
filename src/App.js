@@ -14,9 +14,11 @@ class App extends React.Component {
   }
 
   render () {
+    let obj = getContent(this.state.path);
+
     return (
       <div className="App">
-        {getContent(this.state.path)}
+        {obj.name}
       </div>
     );
   }

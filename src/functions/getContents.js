@@ -38,7 +38,12 @@ export default function getContent (path) {
     const traverse = (arr, obj) => {
         let pathArray = arr.split('/');
         if (pathArray.length === 1) {
-            return 'at target address: ' + pathArray[0];
+            console.log(obj);
+            const result = {
+                name: pathArray[0],
+                type: obj.type,
+            }
+            return result;
         } else {
             const newArr = pathArray.slice(1).join('/');
             return traverse(newArr, obj.children[pathArray[1]]);
