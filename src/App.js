@@ -12,7 +12,6 @@ class App extends React.Component {
     
     this.state = {
       path: "root/home/myname",
-      objLoaded: false,
       obj: {},
       error: false
     }
@@ -23,7 +22,6 @@ class App extends React.Component {
   }
 
   loadObj = () => {
-    this.setState({objLoaded: false})
     getContent(this.state.path).then((res) => {
       this.setState({
         obj: res,
