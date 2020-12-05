@@ -38,10 +38,15 @@ export default function getContent (path) {
     const traverse = (arr, obj) => {
         let pathArray = arr.split('/');
         if (pathArray.length === 1) {
-            console.log(obj);
+
+            let files = Object.keys(obj.children).filter((key) => {
+                return obj.children[key].type === "file";
+            })
+
             const result = {
                 name: pathArray[0],
                 type: obj.type,
+                files: files
             }
             return result;
         } else {
