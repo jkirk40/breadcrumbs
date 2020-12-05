@@ -2,9 +2,8 @@ export default function Breadcrumb(props) {
     const pathArray = props.path.split('/')
     const current = pathArray[props.depth];
 
-    const handleClick = (link) => {
-        let arr = pathArray;
-        const target = (arr.slice(0,props.depth + 1))
+    const handleClick = () => {
+        const target = (pathArray.slice(0,props.depth + 1))
         const newPath = target.join('/');
         props.updatePath(newPath);
     }
@@ -26,7 +25,7 @@ export default function Breadcrumb(props) {
 
     return (
         <div>
-            <button onClick={() => handleClick(current)}>{current}</button>
+            <button onClick={handleClick}>{current}</button>
             {recursiveBreadcrumb()}
         </div>
     )
