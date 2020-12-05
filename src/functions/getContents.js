@@ -33,7 +33,7 @@ const root = {
     },
 };
 
-export default function getContent (path) {
+export default async function getContent (path) {
 
     const traverse = (arr, obj) => {
         let pathArray = arr.split('/');
@@ -52,6 +52,11 @@ export default function getContent (path) {
             return result;
         } else {
             const newArr = pathArray.slice(1).join('/');
+
+            if (!obj.children[pathArray[1]]) {
+                throw new Error('that path does not exist');
+            }
+
             return traverse(newArr, obj.children[pathArray[1]]);
         }
     }
