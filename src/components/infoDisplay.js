@@ -1,3 +1,5 @@
+import Dir from './Dir';
+
 export default function InfoDisplay (props) {
     if (props.obj.type === "file") {
         return (
@@ -7,15 +9,9 @@ export default function InfoDisplay (props) {
         )
     } else if (props.obj.type === "dir") {
         return (
-            <div>
-                <p>Current directory: {props.obj.name}</p>
-                {props.obj.files.map((file, index) => 
-                    <p key={index}>{file}</p>
-                )}
-                {props.obj.subdirectories.map((subdirectory, index) => 
-                    <p key={index}>{subdirectory}</p>
-                )}
-            </div>
+            <Dir obj={props.obj}></Dir>
         )
+    } else {
+        return null;
     }
 }
