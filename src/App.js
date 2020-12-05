@@ -2,6 +2,7 @@ import React from 'react';
 
 import getContent from "./functions/getContents";
 
+import Breadcrumb from './components/Breadcrumb';
 import InfoDisplay from './components/infoDisplay';
 
 import './App.css';
@@ -47,6 +48,13 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
+        <div>
+          <Breadcrumb
+            depth={0}
+            path={this.state.path}
+            updatePath={this.updatePath}
+          />
+        </div>
         {this.state.error ? 'error thrown, please see console' : ''}
         <InfoDisplay 
           obj={this.state.obj}
