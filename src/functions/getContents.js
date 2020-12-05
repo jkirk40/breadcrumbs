@@ -3,10 +3,10 @@ const root = {
     children: {
         home: {
             type: "dir",
-                children: {
-                    myname: {
+            children: {
+                myname: {
                     type: "dir",
-                        children: {
+                    children: {
                         "filea.txt": {
                             type: "file",
                         },
@@ -33,8 +33,34 @@ const root = {
     },
 };
 
-export default function getContent (path) {
+export default async function getContent (path) {
 
-    console.log(root)
-    return 'test';
+    const traverse = (arr, obj) => {
+        let pathArray = arr.split('/');
+        if (pathArray.length === 1) {
+            const objectFilter = (targetType) => {
+                return Object.keys(obj.children).filter((key) => obj.children[key].type === targetType);
+            }
+
+            const result = {
+                name: pathArray[0],
+                type: obj.type,
+                files: objectFilter("file"),
+                subdirectories: objectFilter("dir")
+            }
+
+            return result;
+        } else {
+            const newArr = pathArray.slice(1).join('/');
+
+            if (!obj.children[pathArray[1]]) {
+                throw new Error('that path does not exist');
+            }
+
+            return traverse(newArr, obj.children[pathArray[1]]);
+        }
+    }
+
+    const result = traverse(path, root);
+    return result;
 }
