@@ -2,7 +2,7 @@ import React from 'react';
 
 import getContent from "./functions/getContents";
 
-import InfoDisplay from './components/infoDisplay';
+import InfoDisplay from './components/InfoDisplay';
 
 import './App.css';
 
