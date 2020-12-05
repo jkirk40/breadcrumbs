@@ -38,19 +38,17 @@ export default function getContent (path) {
     const traverse = (arr, obj) => {
         let pathArray = arr.split('/');
         if (pathArray.length === 1) {
-
-            let files = Object.keys(obj.children).filter((key) => obj.children[key].type === "file");
-
-            let subdirectories = Object.keys(obj.children).filter((key) => obj.children[key].type === "dir");
+            const objectFilter = (targetType) => {
+                return Object.keys(obj.children).filter((key) => obj.children[key].type === targetType);
+            }
 
             const result = {
                 name: pathArray[0],
                 type: obj.type,
-                files: files,
-                subdirectories: subdirectories
+                files: objectFilter("file"),
+                subdirectories: objectFilter("dir")
             }
 
-            console.log(result)
             return result;
         } else {
             const newArr = pathArray.slice(1).join('/');
