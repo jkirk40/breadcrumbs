@@ -35,8 +35,11 @@ const root = {
 
 export default function getContent (path) {
     let pathArray = path.split('/');
-    let current = pathArray[pathArray.length - 1];
 
-    console.log(current)
-    return(current)
+    if (pathArray.length === 1) {
+        return 'at target address: ' + pathArray[0];
+    } else {
+        const newArr = pathArray.slice(1).join('/');
+        return getContent(newArr);
+    }
 }
