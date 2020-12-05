@@ -2,6 +2,8 @@ import React from 'react';
 
 import getContent from "./functions/getContents";
 
+import InfoDisplay from './components/infoDisplay';
+
 import './App.css';
 
 class App extends React.Component {
@@ -10,8 +12,8 @@ class App extends React.Component {
     
     this.state = {
       path: "root/home/myname",
-      objLoaded: false,
-      obj: {}
+      obj: {},
+      error: false
     }
   }
 
@@ -20,12 +22,17 @@ class App extends React.Component {
   }
 
   loadObj = () => {
-    this.setState({objLoaded: false})
     getContent(this.state.path).then((res) => {
-      console.log(res)
-      this.setState({obj: res})
+      this.setState({
+        obj: res,
+        error: false
+      })
     })
     .catch((err) => {
+      this.setState({
+        obj: {},
+        error: true
+      })
       console.log(err)
     })
   }
@@ -33,10 +40,8 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <p>{this.state.obj.name}</p>
-        <p>{this.state.obj.type}</p>
-        <p>{this.state.obj.files}</p>
-        <p>{this.state.obj.subdirectories}</p>
+        {this.state.error ? 'error thrown, please see console' : ''}
+        <InfoDisplay obj={this.state.obj}></InfoDisplay>
       </div>
     );
   }
