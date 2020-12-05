@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      path: "root/home/myname",
+      path: "root",
       obj: {},
       error: false
     }
@@ -37,11 +37,22 @@ class App extends React.Component {
     })
   }
 
+  updatePath = (newPath) => {
+    console.log(newPath)
+    this.setState({path: newPath}, () => {
+      this.loadObj();
+    })
+  }
+
   render () {
     return (
       <div className="App">
         {this.state.error ? 'error thrown, please see console' : ''}
-        <InfoDisplay obj={this.state.obj}></InfoDisplay>
+        <InfoDisplay 
+          obj={this.state.obj}
+          path={this.state.path}
+          updatePath={this.updatePath}
+        />
       </div>
     );
   }

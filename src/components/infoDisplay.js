@@ -9,7 +9,11 @@ export default function InfoDisplay (props) {
         )
     } else if (props.obj.type === "dir") {
         return (
-            <Dir obj={props.obj}></Dir>
+            <Dir
+                obj={props.obj}
+                path={props.path}
+                updatePath={props.updatePath}
+            />
         )
     } else {
         return null;
