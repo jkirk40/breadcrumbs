@@ -30,6 +30,10 @@ class App extends React.Component {
       })
     })
     .catch((err) => {
+      //I added this for situations where an invalid path is set
+      //Of course this is not possible when the interface is only buttons
+      //But it could happen if users were typing addresses
+      //To see this work, change this.state.path to: "root/home/mynam"
       this.setState({
         obj: {},
         error: true
@@ -39,7 +43,7 @@ class App extends React.Component {
   }
 
   updatePath = (newPath) => {
-    console.log(newPath)
+    //Update the path stored in state and then immediately load the info for that path
     this.setState({path: newPath}, () => {
       this.loadObj();
     })
