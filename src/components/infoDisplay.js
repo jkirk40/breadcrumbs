@@ -1,6 +1,12 @@
 import Dir from './Dir';
 
 export default function InfoDisplay (props) {
+
+    if (!props.obj) {
+        //handles cases when the data object has not yet been loaded into state
+        return <p>loading...</p>;
+    }
+
     if (props.obj.type === "file") {
         return (
             <div>
