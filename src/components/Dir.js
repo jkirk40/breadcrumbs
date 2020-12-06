@@ -7,7 +7,7 @@ export default function Directory(props) {
     }
 
     return (
-        <div>
+        <div className='dir'>
             <p>Current directory: {props.obj.name}</p>
             {props.obj.files.map((file, index) => 
                 <button key={index} onClick={() => handleClick(file)}>

@@ -34,9 +34,9 @@ export default function Breadcrumb(props) {
     }
 
     return (
-        <div>
-            <button onClick={handleClick}>{current}</button>
+        <span>
+            <button onClick={handleClick} className='breadcrumb'>{current} {'>'}</button>
             {recursiveBreadcrumb()}
-        </div>
+        </span>
     )
 }
