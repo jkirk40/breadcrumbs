@@ -39,7 +39,6 @@ class App extends React.Component {
   }
 
   updatePath = (newPath) => {
-    console.log(newPath)
     this.setState({path: newPath}, () => {
       this.loadObj();
     })
