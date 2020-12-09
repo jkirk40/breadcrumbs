@@ -1,5 +1,10 @@
 export default function Directory(props) {
     const handleClick = (link) => {
+        //Do not accept button inputs while loading new info
+        //Otherwise button can be clicked twice and add its info to the path twice
+        // eg. root/home/myname/myname
+        if (props.loading) {return};
+
         let oldPath = props.path.split('/');
         oldPath.push(link);
         const newPath = oldPath.join('/')

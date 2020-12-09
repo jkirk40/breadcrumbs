@@ -71,5 +71,10 @@ export default async function getContent (path) {
     }
 
     const result = traverse(path, root);
+
+    await new Promise((resolve, reject) => {
+        setTimeout(() => resolve("done!"), 500)
+    });
+
     return result;
 }

@@ -2,7 +2,7 @@ import Dir from './Dir';
 
 export default function InfoDisplay (props) {
 
-    if (!props.obj) {
+    if (props.loading) {
         //handles cases when the data object has not yet been loaded into state
         return <p>loading...</p>;
     }
@@ -19,6 +19,7 @@ export default function InfoDisplay (props) {
                 obj={props.obj}
                 path={props.path}
                 updatePath={props.updatePath}
+                loading={props.loading}
             />
         )
     } else {
