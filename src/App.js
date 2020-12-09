@@ -14,7 +14,8 @@ class App extends React.Component {
     this.state = {
       path: "root",
       obj: {},
-      error: false
+      error: false,
+      loading: false
     }
   }
 
@@ -23,10 +24,14 @@ class App extends React.Component {
   }
 
   loadObj = () => {
+
+    this.setState({loading: true})
+
     getContent(this.state.path).then((res) => {
       this.setState({
         obj: res,
-        error: false
+        error: false,
+        loading: false
       })
     })
     .catch((err) => {
@@ -36,7 +41,8 @@ class App extends React.Component {
       //To see this work, change this.state.path to: "root/home/mynam"
       this.setState({
         obj: {},
-        error: true
+        error: true,
+        loading: false
       })
       console.log(err)
     })
@@ -64,6 +70,7 @@ class App extends React.Component {
           obj={this.state.obj}
           path={this.state.path}
           updatePath={this.updatePath}
+          loading={this.state.loading}
         />
       </div>
     );
