@@ -19,6 +19,7 @@ export default function InfoDisplay (props) {
                 obj={props.obj}
                 path={props.path}
                 updatePath={props.updatePath}
+                loading={props.loading}
             />
         )
     } else {
