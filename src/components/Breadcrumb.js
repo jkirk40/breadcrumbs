@@ -3,6 +3,9 @@ export default function Breadcrumb(props) {
     const current = pathArray[props.depth];
 
     const handleClick = () => {
+        // debounce while data is loading
+        if (props.loading) return;
+        
         // To define the target link for each breadcrumb, we use its depth within the stack of links
         // eg.
         // root is at depth 0
@@ -28,6 +31,7 @@ export default function Breadcrumb(props) {
                     depth={props.depth + 1}
                     path={props.path}
                     updatePath={props.updatePath}
+                    loading={props.loading}
                 />
             )
         }

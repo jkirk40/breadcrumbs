@@ -63,6 +63,7 @@ class App extends React.Component {
             depth={0}
             path={this.state.path}
             updatePath={this.updatePath}
+            loading={this.state.loading}
           />
         </div>
         {this.state.error ? 'error thrown, please see console' : ''}
